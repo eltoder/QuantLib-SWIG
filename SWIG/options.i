@@ -458,7 +458,7 @@ class ExponentialFittingHestonEngine : public PricingEngine {
     
     ExponentialFittingHestonEngine(
         const ext::shared_ptr<HestonModel>& model,
-        ControlVariate cv = ControlVariate::OptimalCV,
+        ControlVariate cv = AnalyticHestonEngine::ComplexLogFormula::OptimalCV,
         doubleOrNull scaling = Null<Real>(),
         Real alpha = -0.5);
 };
@@ -1039,8 +1039,8 @@ class QdFpAmericanEngine : public PricingEngine {
     explicit QdFpAmericanEngine(
       ext::shared_ptr<GeneralizedBlackScholesProcess> bsProcess,
       ext::shared_ptr<QdFpIterationScheme> iterationScheme =
-          accurateScheme(),
-      FixedPointEquation fpEquation = Auto);
+          QdFpAmericanEngine::accurateScheme(),
+      FixedPointEquation fpEquation = QdFpAmericanEngine::Auto);
       
     static ext::shared_ptr<QdFpIterationScheme> fastScheme();
     static ext::shared_ptr<QdFpIterationScheme> accurateScheme();

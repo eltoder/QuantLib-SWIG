@@ -78,6 +78,8 @@ GNU autoconf configure script.
 %include "enumtypesafe.swg"
 #endif
 
+%feature("compactdefaultargs");
+
 // common name mappings
 #if defined(SWIGJAVA)
 %rename(add)           operator+;

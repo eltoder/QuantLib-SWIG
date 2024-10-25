@@ -36,6 +36,9 @@ using QuantLib::Collar;
 %shared_ptr(CapFloor)
 class CapFloor : public Instrument {
   public:
+    #if !defined(SWIGJAVA) && !defined(SWIGCSHARP)
+    %feature("kwargs") impliedVolatility;
+    #endif
     Volatility impliedVolatility(Real price,
                                  const Handle<YieldTermStructure>& disc,
                                  Volatility guess,
